@@ -55,7 +55,7 @@ Create a .env file in the root and add your EmailJS keys:
    ```bash
    npm run dev
 
-##📂 Project Structure
+## 📂 Project Structure
 
 Plaintext
 src/
@@ -64,7 +64,7 @@ src/
 ├── App.jsx           # Main application entry and layout routing
 └── main.jsx          # React DOM rendering
 
-##👨‍💻 Author
+## 👨‍💻 Author
 
 Ali Khaled Senior Software Engineering Student at Cairo University Specializing in Distributed Systems & Fintech Architecture * LinkedIn: [linkedin.com/in/akhamdy](https://www.linkedin.com/in/akhamdy/)
 
