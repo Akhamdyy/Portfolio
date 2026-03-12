@@ -1,16 +1,71 @@
-# React + Vite
+# 🚀 Ali Khaled // Systems Engineering Portfolio
+**The professional digital hub for a Systems Engineer specializing in Fintech & AI architecture.**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Live Site](https://img.shields.io/badge/Live-alikhaled.dev-blue?style=for-the-badge&logo=vercel)](https://alikhaled.dev)
+[![Tech Stack](https://img.shields.io/badge/Built%20With-React%20%2B%20Vite%20%2B%20Tailwind-61dafb?style=for-the-badge&logo=react)](https://reactjs.org/)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Project Overview
+This portfolio is a high-octane, responsive web application designed to showcase technical depth in backend systems, communication engineering, and fintech solutions. It moves away from the traditional "static resume" and functions as a dynamic command center.
 
-## React Compiler
+### 🏗 Key Engineering Features
+* **Dynamic Hero Interface:** Features a custom particle system of floating logos and a non-linear animated background grid.
+* **Technical Arsenal:** A categorized breakdown of competencies ranging from **8086 Assembly** to **Spring Boot** and **3D Secure** protocols.
+* **System Deep Dives:** Dedicated sections for architectural post-mortems on **Adaptive Delta Modulation** and **PLL Control Systems**.
+* **Automated Communication:** A custom-built contact system integrated with **EmailJS** for instant inbound lead generation and auto-responses.
+* **GitHub Integration:** Live contribution tracking via `react-github-calendar` to visualize coding frequency and open-source impact.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## 💻 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Category | Technology |
+| :--- | :--- |
+| **Framework** | React 18 + Vite |
+| **Styling** | Tailwind CSS v4 (Alpha/Experimental) |
+| **Animations** | Framer Motion (3D Tilt & Particle Systems) |
+| **Backend Logic** | EmailJS (Automated SMTP handling) |
+| **Icons** | Lucide React |
+| **Deployment** | Vercel |
+
+---
+
+## 🚀 Installation & Setup
+
+To run this project locally, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/Akhamdyy/ali-portfolio.git](https://github.com/Akhamdyy/ali-portfolio.git)
+   cd ali-portfolio
+Install dependencies:
+
+Bash
+npm install
+Configure Environment Variables:
+Create a .env file in the root and add your EmailJS keys:
+
+Code snippet
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+Start the development server:
+
+Bash
+npm run dev
+📂 Project Structure
+Plaintext
+src/
+├── components/       # Reusable UI Modules (Hero, Skills, Connect, etc.)
+├── assets/           # Logos, custom AK branding, and global styles
+├── App.jsx           # Main application entry and layout routing
+└── main.jsx          # React DOM rendering
+👨‍💻 Author
+Ali Khaled Senior Software Engineering Student at Cairo University Specializing in Distributed Systems & Fintech Architecture * LinkedIn: [linkedin.com/in/akhamdy](https://www.linkedin.com/in/akhamdy/)
+
+Email: alikhaledhamdy@gmail.com
+
+Website: [alikhaled.dev](https://alikhaled.dev)
+
+Built with precision and a touch of wit.
