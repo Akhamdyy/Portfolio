@@ -51,7 +51,7 @@ Create a .env file in the root and add your EmailJS keys:
    VITE_EMAILJS_TEMPLATE_ID=your_template_id
    VITE_EMAILJS_PUBLIC_KEY=your_public_key
 
-4. **Start the development server:**
+5. **Start the development server:**
    ```bash
    npm run dev
 
