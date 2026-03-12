@@ -41,8 +41,9 @@ To run this project locally, follow these steps:
    cd ali-portfolio
 Install dependencies:
 
-Bash
-npm install
+   ```bash
+   npm install
+
 Configure Environment Variables:
 Create a .env file in the root and add your EmailJS keys:
 
@@ -52,16 +53,20 @@ VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 Start the development server:
 
-Bash
-npm run dev
-📂 Project Structure
+   ```bash
+   npm run dev
+
+##📂 Project Structure
+
 Plaintext
 src/
 ├── components/       # Reusable UI Modules (Hero, Skills, Connect, etc.)
 ├── assets/           # Logos, custom AK branding, and global styles
 ├── App.jsx           # Main application entry and layout routing
 └── main.jsx          # React DOM rendering
-👨‍💻 Author
+
+##👨‍💻 Author
+
 Ali Khaled Senior Software Engineering Student at Cairo University Specializing in Distributed Systems & Fintech Architecture * LinkedIn: [linkedin.com/in/akhamdy](https://www.linkedin.com/in/akhamdy/)
 
 Email: alikhaledhamdy@gmail.com
