@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+import GlitchText from './GlitchText'; // Make sure this is imported
 
 const techStack = [
   "Spring Boot", "Flutter", "Angular", "Node.js", "Express", "Java", "C++", "Python", 
   "PostgreSQL", "MongoDB", "Supabase", "REST APIs", "JWT", "JWE/JWS", "RSA", "3D Secure"
 ];
 
-// Refined particle field: Scattered and clearly visible
 const logoParticles = [
   { top: '15%', left: '55%', size: 'h-14', delay: 0, duration: 12, opacity: 0.2 },
   { top: '10%', left: '80%', size: 'h-8', delay: 2, duration: 20, opacity: 0.15 },
@@ -19,25 +19,23 @@ const logoParticles = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-start px-8 md:px-24 bg-slate-950 text-white overflow-hidden z-0">
+    /* Removed solid bg-slate-950 and changed to bg-transparent to show PerspectiveGrid */
+    <section className="relative min-h-screen flex flex-col justify-center items-start px-8 md:px-24 bg-transparent text-white overflow-hidden z-0">
       
-      {/* 1. Background Grid */}
-      <div className="absolute inset-0 z-[-1] bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_40%,#000_20%,transparent_100%)] opacity-40"></div>
-
-      {/* 2. Enhanced Particle Field Container */}
+      {/* 1. Enhanced Particle Field Container */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         
-        {/* Main Large Ghost Logo - Centered more and more visible */}
+        {/* Main Large Ghost Logo */}
         <motion.img 
           src="/logo.png" 
           alt="Watermark" 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.12, y: [0, -30, 0] }}
+          initial={{ opacity: 0.03 }}
+          animate={{ opacity: 0.5, y: [0, -30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute right-[0%] top-[10%] w-[750px] h-auto grayscale [mask-image:linear-gradient(to_left,black_60%,transparent_100%)]"
+          className="absolute right-[0%] top-[10%] w-[750px] h-auto grayscale [mask-image:linear-gradient(to_left,black_60%,transparent_100%)] opacity-20"
         />
 
-        {/* Scattered Particles with visibility bump */}
+        {/* Scattered Particles */}
         {logoParticles.map((p, i) => (
           <motion.img
             key={i}
@@ -60,11 +58,13 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* 3. Main Content */}
+      {/* 2. Main Content */}
       <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }} className="z-10 relative">
-        <p className="text-blue-400 font-mono tracking-[0.3em] uppercase text-sm mb-4">Systems Engineer // Fintech & AI</p>
+        <p className="text-blue-400 font-mono tracking-[0.3em] uppercase text-sm mb-4">Systems Engineer // Fintech & AI Architecture</p>
+        
+        {/* Integrated GlitchText for the Wow Factor */}
         <h1 className="text-7xl md:text-9xl font-black mb-4 tracking-tighter leading-none">
-          Ali <span className="text-slate-500">Khaled.</span>
+          Ali <GlitchText text="Khaled." className="text-slate-500" />
         </h1>
         
         <div className="text-2xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500 mb-8 h-16">
@@ -98,11 +98,11 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* 4. Infinite Tech Ribbon */}
-      <div className="absolute bottom-20 left-0 w-full overflow-hidden whitespace-nowrap py-4 bg-slate-900/20 backdrop-blur-sm border-y border-white/5">
+      {/* 3. Infinite Tech Ribbon */}
+      <div className="absolute bottom-20 left-0 w-full overflow-hidden whitespace-nowrap py-4 bg-slate-900/10 backdrop-blur-sm border-y border-white/5">
         <motion.div animate={{ x: ["0%", "-50%"] }} transition={{ duration: 25, repeat: Infinity, ease: "linear" }} className="flex gap-12 w-max items-center">
           {[...techStack, ...techStack].map((tech, i) => (
-            <span key={i} className="text-slate-500 font-mono text-sm tracking-tighter hover:text-blue-400 transition-colors uppercase">{tech}</span>
+            <span key={i} className="text-slate-600 font-mono text-xs tracking-widest hover:text-blue-400 transition-colors uppercase">{tech}</span>
           ))}
         </motion.div>
       </div>

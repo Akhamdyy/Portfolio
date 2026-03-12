@@ -10,12 +10,20 @@ import Extras from './components/Extras';
 import Connect from './components/Connect';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
-import Terminal from './components/Terminal'; // Ensure you created this file!
+import Terminal from './components/Terminal';
+import MatrixRain from './components/MatrixRain';
+import PerspectiveGrid from './components/PerspectiveGrid'; 
+import LogicLab from './components/LogicLab'; 
 
 function App() {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
+  const [showMatrix, setShowMatrix] = useState(false);
 
-  // Global listener for the ` key to toggle the terminal
+  const triggerMatrix = () => {
+    setShowMatrix(true);
+    setTimeout(() => setShowMatrix(false), 8000);
+  };
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === '`') {
@@ -28,26 +36,39 @@ function App() {
   }, []);
 
   return (
-    <main className="font-sans antialiased bg-slate-950 selection:bg-blue-500/30">
-      {/* Terminal Overlay */}
-      <Terminal isOpen={isTerminalOpen} setIsOpen={setIsTerminalOpen} />
+    /* 1. The BASE LAYER: This is the only place with a solid background color */
+    <main className="relative min-h-screen w-full font-sans antialiased bg-slate-950 text-slate-200 selection:bg-blue-500/30 overflow-x-hidden">
+      
+      {/* 2. THE BACKGROUND ARCHITECTURE: Fixed and low z-index */}
+      <div className="fixed inset-0 z-0">
+        <PerspectiveGrid />
+      </div>
+      
+      <MatrixRain isActive={showMatrix} />
 
-      {/* Pass the toggle function to Navbar for the icon click */}
-      <Navbar onTerminalClick={() => setIsTerminalOpen(true)} />
+      {/* 3. THE TERMINAL: High z-index to stay above everything when open */}
+      <Terminal 
+        isOpen={isTerminalOpen} 
+        setIsOpen={setIsTerminalOpen} 
+        onSudo={triggerMatrix} 
+      />
 
-      <div>
+      {/* 4. THE CONTENT LAYER: Must be relative z-10 and bg-transparent */}
+      <div className="relative z-10 bg-transparent">
+        <Navbar onTerminalClick={() => setIsTerminalOpen(true)} />
+        
+        {/* All these children MUST have 'bg-transparent' or no bg class at all */}
         <Hero />
         <Skills />
         <Experience />
+        <LogicLab /> 
         <Projects />
         <Extras />
         <Connect />
         <ContactForm />
+        <Footer />
       </div>
 
-      <Footer />
-      
-      {/* Monitoring */}
       <Analytics />
       <SpeedInsights />
     </main>
