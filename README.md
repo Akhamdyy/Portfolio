@@ -39,20 +39,19 @@ To run this project locally, follow these steps:
    ```bash
    git clone [https://github.com/Akhamdyy/ali-portfolio.git](https://github.com/Akhamdyy/ali-portfolio.git)
    cd ali-portfolio
-Install dependencies:
-
+2. **Install dependencies:**
    ```bash
    npm install
 
-Configure Environment Variables:
+3. **Configure Environment Variables:**
 Create a .env file in the root and add your EmailJS keys:
 
 Code snippet
 VITE_EMAILJS_SERVICE_ID=your_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
-Start the development server:
 
+4. **Start the development server:**
    ```bash
    npm run dev
 
