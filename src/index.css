@@ -1,11 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  /* Define the animations */
+  /* Typography: Space Grotesk as the primary font */
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'Fira Code', monospace;
+
+  /* Glitch animations */
   --animate-glitch-1: glitch-1 0.3s cubic-bezier(.25,.46,.45,.94) infinite;
   --animate-glitch-2: glitch-2 0.3s cubic-bezier(.25,.46,.45,.94) reverse infinite;
 
-  /* Define the keyframes */
+  /* Shimmer animation for gradient borders */
+  --animate-shimmer: shimmer 2.5s linear infinite;
+
+  /* Gradient border spin */
+  --animate-border-spin: border-spin 4s linear infinite;
+
   @keyframes glitch-1 {
     0%, 100% { transform: translate(0); }
     20% { transform: translate(-3px, 3px); }
@@ -21,4 +30,269 @@
     60% { transform: translate(-3px, -3px); }
     80% { transform: translate(-3px, 3px); }
   }
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes border-spin {
+    0% { --angle: 0deg; }
+    100% { --angle: 360deg; }
+  }
+}
+
+/* ─── Custom Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e3a5f;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* ─── Custom Cursor — hide default on pointer devices ─────────────────── */
+@media (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+/* ─── Smooth scroll ─────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Noise grain overlay — applied via a fixed pseudo-element ────────── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* ─── Section label utility ─────────────────────────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #3b82f6;
+}
+
+/* ─── Gradient text utility ─────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #818cf8 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Glow card utility ─────────────────────────────────────────────────── */
+.glow-card {
+  position: relative;
+  transition: box-shadow 0.4s ease;
+}
+.glow-card:hover {
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.25), 0 20px 60px -10px rgba(59, 130, 246, 0.12);
+}
+
+/* ─── Animated gradient border ──────────────────────────────────────────── */
+.gradient-border {
+  position: relative;
+  background: #0f172a;
+  border-radius: 1rem;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #1e3a5f, #1e1b4b, #1e3a5f);
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  opacity: 0.6;
+}
+.gradient-border:hover::before {
+  background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+  opacity: 1;
+}
+
+/* ─── Scroll reveal — CSS transitions, triggered by IntersectionObserver ─── */
+/* Single element: fade up */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Single element: slide in from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.reveal-left.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Staggered group — fade up children */
+.reveal-group > .reveal-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.reveal-group.is-visible > .reveal-item          { opacity: 1; transform: none; }
+.reveal-group.is-visible > .reveal-item:nth-child(1) { transition-delay: 0.00s; }
+.reveal-group.is-visible > .reveal-item:nth-child(2) { transition-delay: 0.07s; }
+.reveal-group.is-visible > .reveal-item:nth-child(3) { transition-delay: 0.14s; }
+.reveal-group.is-visible > .reveal-item:nth-child(4) { transition-delay: 0.21s; }
+.reveal-group.is-visible > .reveal-item:nth-child(5) { transition-delay: 0.28s; }
+.reveal-group.is-visible > .reveal-item:nth-child(6) { transition-delay: 0.35s; }
+.reveal-group.is-visible > .reveal-item:nth-child(7) { transition-delay: 0.42s; }
+
+/* Staggered group — slide in from left children */
+.reveal-group-left > .reveal-item {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.reveal-group-left.is-visible > .reveal-item          { opacity: 1; transform: none; }
+.reveal-group-left.is-visible > .reveal-item:nth-child(1) { transition-delay: 0.00s; }
+.reveal-group-left.is-visible > .reveal-item:nth-child(2) { transition-delay: 0.15s; }
+.reveal-group-left.is-visible > .reveal-item:nth-child(3) { transition-delay: 0.30s; }
+
+/* ─── Floating particle animation (CSS — runs on compositor, not JS) ─────── */
+@keyframes float-a {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-28px) rotate(8deg); }
+  66%       { transform: translateY(-12px) rotate(-5deg); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-32px) rotate(12deg); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  40%       { transform: translateY(-18px) rotate(-8deg); }
+  80%       { transform: translateY(-36px) rotate(6deg); }
+}
+
+/* ─── One-shot pop-in for status banners ───────────────────────────────── */
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.animate-pop-in {
+  animation: pop-in 0.3s ease forwards;
+}
+
+/* ─── Splash screen ──────────────────────────────────────────────────────── */
+.splash-root {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #020617; /* slate-950 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.splash-root.splash-exit {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.splash-glow {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  animation: splash-pulse 2s ease-in-out infinite;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  animation: splash-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.splash-logo {
+  width: clamp(180px, 30vw, 280px);
+  height: auto;
+  filter: drop-shadow(0 0 40px rgba(59,130,246,0.5));
+  user-select: none;
+  /* pop fires once the bar finishes: bar delay(0.1s) + bar duration(1.4s) = 1.5s */
+  animation: splash-logo-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s both;
+}
+
+.splash-bar-track {
+  width: clamp(180px, 30vw, 280px);
+  height: 2px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.splash-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 999px;
+  animation: splash-bar 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+}
+
+@keyframes splash-enter {
+  from { opacity: 0; transform: translateY(16px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes splash-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1);    }
+  50%       { opacity: 1;   transform: scale(1.08); }
+}
+
+@keyframes splash-bar {
+  from { width: 0%;   }
+  to   { width: 100%; }
+}
+
+/* Logo pop-pulse fires once bar is full */
+@keyframes splash-logo-pop {
+  0%   { transform: scale(1);    filter: drop-shadow(0 0 40px rgba(59,130,246,0.5)); }
+  45%  { transform: scale(1.15); filter: drop-shadow(0 0 70px rgba(139,92,246,1));   }
+  100% { transform: scale(1);    filter: drop-shadow(0 0 50px rgba(99,102,241,0.7)); }
+}
+
+/* ─── Scroll progress bar ────────────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #6366f1, #8b5cf6);
+  z-index: 9999;
+  transform-origin: left;
+  transition: width 0.1s linear;
 }

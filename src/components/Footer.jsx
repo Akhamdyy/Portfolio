@@ -4,46 +4,45 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-10 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-400 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-        
-        <div className="text-center md:text-left">
-          <p className="font-semibold text-slate-900 dark:text-slate-100">Ali Khaled</p>
-          <p className="text-sm mt-1">Software Engineer based in Egypt.</p>
+    <footer className="relative border-t border-slate-800/60 bg-slate-950">
+      {/* Gradient top line */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
+
+      <div className="max-w-6xl mx-auto px-8 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
+
+        {/* Brand */}
+        <div className="flex items-center gap-3">
+          <img src="/logo.png" alt="AK" className="h-7 w-7 opacity-60" />
+          <div>
+            <p className="text-sm font-semibold text-slate-300">Ali Khaled</p>
+            <p className="text-xs text-slate-600 font-mono mt-0.5">Software Engineer · Cairo, Egypt</p>
+          </div>
         </div>
 
-        <div className="flex items-center gap-6">
-          <a 
-            href="https://github.com/Akhamdyy" 
-            target="_blank" 
-            rel="noreferrer"
-            className="hover:text-blue-600 dark:hover:text-blue-400 hover:scale-110 transition-all"
-            aria-label="GitHub"
-          >
-            <Github size={24} />
-          </a>
-          <a 
-            href="https://www.linkedin.com/in/akhamdy/" 
-            target="_blank" 
-            rel="noreferrer"
-            className="hover:text-blue-600 dark:hover:text-blue-400 hover:scale-110 transition-all"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={24} />
-          </a>
-          <a 
-            href="mailto:alikhaledhamdy@gmail.com" 
-            className="hover:text-blue-600 dark:hover:text-blue-400 hover:scale-110 transition-all"
-            aria-label="Email"
-          >
-            <Mail size={24} />
-          </a>
+        {/* Social links */}
+        <div className="flex items-center gap-3">
+          {[
+            { href: "https://github.com/Akhamdyy", icon: Github, label: "GitHub" },
+            { href: "https://www.linkedin.com/in/akhamdy/", icon: Linkedin, label: "LinkedIn" },
+            { href: "mailto:alikhaledhamdy@gmail.com", icon: Mail, label: "Email" },
+          ].map(({ href, icon: Icon, label }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={label}
+              className="p-2 rounded-lg text-slate-600 hover:text-slate-300 hover:bg-white/5 transition-all duration-200"
+            >
+              <Icon size={18} />
+            </a>
+          ))}
         </div>
 
-        <div className="text-sm text-center md:text-right">
-          <p>&copy; {currentYear} All rights reserved.</p>
-        </div>
-
+        {/* Copyright */}
+        <p className="text-xs text-slate-700 font-mono">
+          &copy; {currentYear} · Built with React &amp; Vite
+        </p>
       </div>
     </footer>
   );
