@@ -96,7 +96,7 @@ export default function Hero() {
         <motion.div variants={itemVariants} className="flex items-center gap-3 mb-6">
           <span className="w-6 h-px bg-blue-500" />
           <span className="font-mono text-blue-400 tracking-[0.25em] uppercase text-xs">
-            Systems Engineer // Fintech &amp; AI Architecture
+            Software Engineer // Backend, Mobile &amp; QA Automation
           </span>
         </motion.div>
 
@@ -131,11 +131,12 @@ export default function Hero() {
         {/* Bio */}
         <motion.p
           variants={itemVariants}
-          className="max-w-lg text-sm sm:text-base text-slate-400 mb-10 pl-4 border-l border-blue-600/40 leading-relaxed"
+          className="max-w-lg text-sm sm:text-base text-slate-400 mb-6 pl-4 border-l border-blue-600/40 leading-relaxed"
         >
-          Senior Software Engineering Student at{' '}
-          <span className="text-slate-200 font-medium">Cairo University</span>.{' '}
-          Expertise in secure payment processing, distributed systems, and real-time infrastructure.
+          There's no debate about whether I'm good enough — that ended the moment I shipped. Senior-2 Computer
+          Engineering student at <span className="text-slate-200 font-medium">Cairo University</span>, already
+          leading products into production, hardening FinTech backends, and building QA pipelines nobody else
+          thinks to build. I'm not applying for the job. I'm deciding if it deserves me.
         </motion.p>
 
         {/* CTAs */}
@@ -158,11 +159,11 @@ export default function Hero() {
         </motion.div>
 
         {/* Stats row */}
-        <motion.div variants={itemVariants} className="flex gap-6 sm:gap-8 mt-12 pt-8 border-t border-slate-800/60">
+        <motion.div variants={itemVariants} className="flex gap-6 sm:gap-8 mt-6 pt-4 border-t border-slate-800/60">
           {[
-            { value: '3+', label: 'Years Coding' },
-            { value: '7+', label: 'Projects Shipped' },
-            { value: '2',  label: 'Internships' },
+            { value: '5+', label: 'Years Coding' },
+            { value: '8+', label: 'Projects Shipped' },
+            { value: '3',  label: 'Internships' },
           ].map(({ value, label }) => (
             <div key={label}>
               <div className="text-2xl font-bold text-white">{value}</div>

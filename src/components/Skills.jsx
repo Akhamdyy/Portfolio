@@ -1,4 +1,4 @@
-import { Code2, Globe, Database, Cpu, Smartphone, Wrench } from 'lucide-react';
+import { Code2, Globe, Database, Cpu, Smartphone, Wrench, FlaskConical } from 'lucide-react';
 import { useReveal, useRevealGroup } from '../hooks/useReveal';
 
 const skillCategories = [
@@ -12,7 +12,7 @@ const skillCategories = [
     title: "Web & Fintech",
     icon: Globe,
     accent: 'indigo',
-    skills: ["Spring Boot", "Hibernate/JPA", "Node.js", "Express.js", "Angular", "React", "REST APIs", "JWT", "JWE/JWS", "RSA", "3D Secure", "Payment Processing"]
+    skills: ["Spring Boot", "Hibernate/JPA", "Node.js", "Express.js", "Angular", "React", "REST APIs", "JWT", "OAuth 2.0", "JWE/JWS", "RSA", "3D Secure", "Stripe"]
   },
   {
     title: "Databases",
@@ -30,13 +30,19 @@ const skillCategories = [
     title: "Mobile & AI",
     icon: Smartphone,
     accent: 'purple',
-    skills: ["Flutter", "Google Gemini API", "Machine Learning (OCR)", "Speech-to-Text", "Biometric Security"]
+    skills: ["Flutter", "BLoC/Cubit", "GetIt/Injectable DI", "Firebase Cloud Messaging", "Socket.IO", "Google Gemini API", "Machine Learning (OCR)", "Speech-to-Text", "Biometric Security"]
   },
   {
     title: "Tools & Principles",
     icon: Wrench,
     accent: 'sky',
-    skills: ["Git BASH", "GitHub", "VS Code", "Postman API", "DevOps", "Software Testing", "SOLID", "DDD", "OOP"]
+    skills: ["Git BASH", "GitHub", "VS Code", "Postman API", "DevOps", "SOLID", "DDD", "Clean Architecture", "Repository Pattern", "OOP"]
+  },
+  {
+    title: "QA & Automation Testing",
+    icon: FlaskConical,
+    accent: 'blue',
+    skills: ["Selenium WebDriver", "Cucumber (BDD/Gherkin)", "TestNG", "Page Object Model (POM)", "Allure Reports", "Maven", "WebDriverManager"]
   }
 ];
 

@@ -1,15 +1,24 @@
-import { GraduationCap, Banknote, Building2 } from 'lucide-react';
+import { GraduationCap, Banknote, Building2, Bug } from 'lucide-react';
 import { useReveal, useRevealGroup } from '../hooks/useReveal';
 
 const experiences = [
   {
-    role: "Senior-1 CCE-C Student",
+    role: "Senior-2 CCE-C Student",
     company: "Cairo University",
     date: "June 2022 – June 2027",
     type: "Education",
     icon: GraduationCap,
     accent: 'blue',
     description: "Focusing on advanced software engineering concepts, operating systems, and building scalable applications.",
+  },
+  {
+    role: "QA & Automation Testing Intern",
+    company: "Vodafone Egypt",
+    date: "July 2026 – September 2026",
+    type: "Internship",
+    icon: Bug,
+    accent: 'cyan',
+    description: "Building and maintaining an automated QA suite for Vodafone's eShop platform using Selenium WebDriver, Cucumber (BDD/Gherkin), and TestNG, with Allure-based reporting.",
   },
   {
     role: "FinTech Software Engineering Intern",
@@ -35,6 +44,7 @@ const accentMap = {
   blue:   { ring: 'ring-blue-500/30',   icon: 'bg-blue-500/10 text-blue-400 border-blue-500/20',   badge: 'bg-blue-500/10 text-blue-400 border-blue-500/20'   },
   indigo: { ring: 'ring-indigo-500/30', icon: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20', badge: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20' },
   violet: { ring: 'ring-violet-500/30', icon: 'bg-violet-500/10 text-violet-400 border-violet-500/20', badge: 'bg-violet-500/10 text-violet-400 border-violet-500/20' },
+  cyan:   { ring: 'ring-cyan-500/30',   icon: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',   badge: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20'   },
 };
 
 export default function Experience() {

@@ -4,6 +4,15 @@ import { useReveal, useRevealGroup } from '../hooks/useReveal';
 
 const projects = [
   {
+    title: "Harmonica",
+    problem: "Music discovery platforms often feel siloed from social interaction, leaving streaming and engagement disconnected.",
+    challenge: "Leading a 5-person cross-platform sub-team — within a 20-person org spanning frontend, backend, testing, and DevOps — to architect a SoundCloud-inspired app in Flutter with Clean Architecture (BLoC/Cubit, GetIt/Injectable DI), real-time messaging, and Stripe-based subscriptions.",
+    techStack: ["Flutter", "BLoC/Cubit", "Socket.IO", "Firebase", "Stripe"],
+    repoLink: "https://github.com/Team-6-CUFE/Cross",
+    docsLink: "https://github.com/Team-6-CUFE/Cross#readme",
+    accent: 'sky',
+  },
+  {
     title: "PressurePal",
     problem: "Chronic health conditions require consistent monitoring, but manual tracking is often tedious and error-prone for patients.",
     challenge: "Synchronizing real-time Flutter state with a Supabase backend while maintaining a clean, accessible UI for non-technical users.",
